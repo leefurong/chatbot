@@ -33,11 +33,11 @@ $ chatbot create
 ```
 3. 一个python项目， 必须包含一个completion函数:(TODO: 研究python以什么形式打包，供别人调用？)
 ```
-    completion(prompt)==>new-prompt
+    completion(context, chats)==>new-chats
 ```
 开发者可以在这个函数里， 发起多个openai请求， 记录重要信息， 甚至升级“事实”， 升级这个角色自身等等。
 - 记录用户的重要信息： 开发者可以使用mongodb的数据修改语句， 来修改“角色”或者“角色-用户”的记忆。
-- 升级角色自身： 开发者可以通过调用"chatbot update <roleid> new-python-role.py"来升级自身。
+- 升级角色自身： 开发者可以通过调用命令`chatbot update <roleid> new-python-role.py`来升级自身。
 
 事实上， 前两种文本方式，在chatbot项目内部，都会被统一包装成第三种形式, 也就是说， chatbot会为前两种方式的“角色”生成一个python格式的角色。 并且在内部统一使用python格式的角色。
 
@@ -84,11 +84,11 @@ $ chatbot talk 123 111
 111: 输入一个整数n， 输出1~n之间的奇数。
 ```
 
-# 运行时环境
-开发者的代码在执行时， 可以`import context`  
-这包括：
+# 运行时环境: context 
+作为completion函数的第一个参数。 这包括：
 1. db: 一个mongodb数据库, 使用monger库来访问。(TODO: 待研究)
-2. user-id: 聊天的用户id。 如果为空，则为匿名用户。
+2. user_id: 聊天的用户id。 如果为空，则为匿名用户。
+3. role_id: 我这个角色的id。
 
 # 用户系统
 chatbot与应用（角色）的用户系统没有耦合。 这意味着chatbot没有自己的用户系统。  
