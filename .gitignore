@@ -24,3 +24,6 @@ temp/
 
 # 忽略 VSCode 缓存目录
 .vscode/
+
+# 忽略venv
+venv/
