@@ -27,3 +27,6 @@ temp/
 
 # 忽略venv
 venv/
+
+# 忽略本地的配置
+conf_local.yaml

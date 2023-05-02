@@ -1,0 +1,8 @@
+# 配置
+# 把本文件拷贝到conf_local.yaml， 并且进行配置
+openai_key: 
+database: 
+  host: 
+  port: 
+  username: 
+  password: 
